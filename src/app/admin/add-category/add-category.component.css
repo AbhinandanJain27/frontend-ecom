@@ -1,0 +1,38 @@
+.container {
+    padding: 24px;
+    min-width: 70%;
+  }
+  
+  .topBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .topBar h2 {
+    margin: 0;
+  }
+  
+  .topBar button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  .topBar button:hover {
+    color: red;
+  }
+  
+  .form-field {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  button[type="submit"] {
+    display: block;
+    margin: 0 auto;
+  }

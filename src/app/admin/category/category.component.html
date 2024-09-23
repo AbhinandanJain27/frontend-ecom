@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="topBar">
+        <h2>Category List</h2>
+        <button type="button" class="add-btn" (click)="openMiniWindow()">Add Category</button>
+    </div>
+
+    <table class="category-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th class="actions">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let category of categories">
+                <td>{{ category.id }}</td>
+                <td>{{ category.type }}</td>
+                <td>{{ category.name }}</td>
+                <td>{{ category.description }}</td>
+                <td class="actions">
+                    <button type="button" class="delete-btn" (click)="deleteCategory(category.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

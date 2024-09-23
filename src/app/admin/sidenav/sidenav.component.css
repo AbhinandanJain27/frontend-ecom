@@ -1,0 +1,31 @@
+/* src/app/admin/sidebar/sidebar.component.css */
+nav {
+    background-color: #d7dbdf;
+    height: 100%;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    padding: 15px;
+  }
+  
+  li a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  li a.active {
+    font-weight: bold;
+  }
+  
+  li a:hover {
+    text-decoration: underline;
+  }
+  
+  li a.active, li a:hover {
+    color: #007bff;
+  }

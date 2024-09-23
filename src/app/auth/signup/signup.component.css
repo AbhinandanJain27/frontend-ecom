@@ -1,0 +1,95 @@
+.box {
+    font-family: cursive;
+    background: url("../../../assests/Ecommerce\ Background.jpg");
+    padding: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-clip: border-box;
+    background-size: cover;
+    height: 95vh;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h2 {
+    text-align: center;
+    color: #ffffff;
+
+}
+
+.container {
+    max-width: 60%;
+    min-height: 50vh;
+    margin: 2% auto;
+    background-color: #000000d3;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: visible;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: white;
+    padding: 0.2em;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="c_password"],
+input[type="number"] {
+    width: 90%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #309ed9;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.switch {
+    text-align: center;
+    margin-top: 10px;
+    padding: 0.3em;
+}
+
+.switch a {
+    text-decoration: none;
+    color: red;
+}
+
+.switch a :hover {
+    text-decoration: underline;
+    color: orange;
+}
+
+
+button {
+    background-color: #309ed9;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-top: 2em;
+    width: 93%;
+}
+
+button:hover {
+    background-color: #0771aa;
+    color: antiquewhite;
+}

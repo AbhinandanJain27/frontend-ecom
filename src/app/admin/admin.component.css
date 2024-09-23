@@ -1,0 +1,19 @@
+.admin-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.sidebar-content {
+  display: flex;
+  flex: 1;
+}
+
+app-sidenav {
+  width: 250px;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}

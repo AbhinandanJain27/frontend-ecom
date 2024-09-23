@@ -1,0 +1,38 @@
+<div class="box">
+
+    <div class="container">
+        <h2>Sign Up</h2>
+        <form id="emiForm">
+
+            <label for="name">Name<span class="text-danger">*</span></label>
+            <input type="text" id="years" name="years" placeholder="Name" required formGroupName="name"
+                [(ngModel)]="registerUser.name">
+
+            <label for="email">Email<span class="text-danger">*</span></label>
+            <input type="email" id="email" name="email" placeholder="Email" required formGroupName="email"
+                [(ngModel)]="registerUser.email">
+
+            <label for="phone">Phone<span class="text-danger">*</span></label>
+            <input type="number" maxlength="10" id="phone" name="phone" placeholder="Phone" required
+                formGroupName="phone" [(ngModel)]="registerUser.mobileNumber">
+
+            <label for="password">Password<span class="text-danger">*</span></label>
+            <input type="password" id="password" name="password" placeholder="Password" required
+                formGroupName="password" [(ngModel)]="registerUser.password">
+
+            <label for="c_password">Retype Password<span class="text-danger">*</span></label>
+            <input type="password" id="c_password" (input)="onPasswordType()" name="c_password" placeholder="Password"
+                required formGroupName="c_password" [(ngModel)]="confirmPassword">
+
+            <label class="text-danger" *ngIf="passwordEquality">* Passwords must be same</label>
+
+            <button type="button" (click)="onSubmit()">Register</button>
+
+            <label class="switch" for="c_password">Already have account ? <a [routerLink]="['/login']">Log
+                    In</a></label>
+
+        </form>
+
+    </div>
+
+</div>
