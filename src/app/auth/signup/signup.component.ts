@@ -11,7 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './signup.component.css'
 })
 export class SignupComponent {
-  registerUser : User = new User('','',0,'','ACTIVE');
+  registerUser : User = new User('','',0,'');
   confirmPassword : string = '';
   passwordEquality: boolean = false;
 

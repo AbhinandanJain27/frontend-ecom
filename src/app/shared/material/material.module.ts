@@ -20,6 +20,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatList } from '@angular/material/list';
 import { MatNavList } from '@angular/material/list';
+import { MatIcon } from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ import { MatNavList } from '@angular/material/list';
     MatTableModule,
     MatSidenavModule,
     MatList,
-    MatNavList
+    MatNavList,
+    MatIcon
   ],
   exports: [
     MatButtonModule,
@@ -68,7 +70,8 @@ import { MatNavList } from '@angular/material/list';
     MatTableModule,
     MatSidenavModule,
     MatList,
-    MatNavList
+    MatNavList,
+    MatIcon
   ]
 })
 export class MaterialModule { }

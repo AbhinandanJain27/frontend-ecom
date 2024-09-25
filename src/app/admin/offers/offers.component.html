@@ -1,1 +1,28 @@
-<p>offers works!</p>
+<div class="container">
+    <div class="topBar">
+        <h2>Coupons List</h2>
+        <button type="button" class="add-btn" (click)="openMiniWindow()">Add Coupons</button>
+    </div>
+
+    <table class="category-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Discount</th>
+                <th class="actions">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let coupon of coupons">
+                <!-- <td>{{ coupon.id }}</td>
+                <td>{{ coupon.type }}</td>
+                <td>{{ coupon.name }}</td>
+                <td>{{ coupon.description }}</td> -->
+                <td class="actions">
+                    <button type="button" class="delete-btn" (click)="deleteCoupon(12)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

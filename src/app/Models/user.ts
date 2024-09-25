@@ -4,15 +4,15 @@ export class User {
     email: string;
     mobileNumber: number;
     password: string;
-    accountStatus : string;
+    accountStatus : string = "ACTIVE";
 
 
-    constructor(name: string, email: string, mobileNumber: number, password: string, accountStatus:string) {
+    constructor(name: string, email: string, mobileNumber: number, password: string) {
         this.name = name;
         this.email = email;
         this.mobileNumber = mobileNumber;
         this.password = password;
-        this.accountStatus = accountStatus;
+        // this.accountStatus = accountStatus;
     }
 
 
