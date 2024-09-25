@@ -1,1 +1,0 @@
-This is a temp Notepad and it should not be available when I checkout to master branch.

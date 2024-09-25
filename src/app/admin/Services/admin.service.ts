@@ -32,11 +32,15 @@ export class AdminService {
     return this.http.get(`${this.baseUrl}/product/products`);
   }
 
+  getAllProductsByName(name: string) : Observable<any>{
+    return this.http.get(`${this.baseUrl}/product/search/${name}`);
+  }
+
   addProduct(productDto: any): Observable<any> {
     return this.http.post<category>(`${this.baseUrl}/product/addProduct`, productDto);
   }
 
-  deleteProduct(id: number): Observable<void> {
+  deleteProduct(id:any): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/product/${id}`);
   }
 

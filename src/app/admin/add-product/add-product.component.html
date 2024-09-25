@@ -36,8 +36,8 @@
     <div class="form-field">
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Name</mat-label>
-        <input matInput type="text" placeholder="Name" formControlName="name" />
-        <mat-error *ngIf="productForm.get('name')?.hasError('required')">This is required!</mat-error>
+        <input matInput type="text" placeholder="Name" formControlName="productName" />
+        <mat-error *ngIf="productForm.get('productName')?.hasError('required')">This is required!</mat-error>
       </mat-form-field>
     </div>
 

@@ -1,18 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { category } from '../../Models/category';
 import { AdminService } from '../Services/admin.service';
-import { product } from '../../Models/product';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.css'] // Changed `styleUrl` to `styleUrls`
+  styleUrls: ['./add-product.component.css']
 })
-export class AddProductComponent {
+export class AddProductComponent implements OnInit {
   productForm!: FormGroup;
   Categories: category[] = [];
   selectedFile!: File | null;
@@ -29,7 +28,7 @@ export class AddProductComponent {
   ngOnInit(): void {
     this.productForm = this.fb.group({
       categoryId: [null, [Validators.required]],
-      name: [null, [Validators.required]],
+      productName: [null, [Validators.required]],
       price: [null, [Validators.required]],
       description: [null, [Validators.required]],
     });
@@ -43,7 +42,7 @@ export class AddProductComponent {
         this.Categories = res;
       },
       error => {
-        console.error("Error fetching categories");
+        console.error('Error fetching categories');
       }
     );
   }
@@ -56,24 +55,28 @@ export class AddProductComponent {
     if (this.productForm.valid) {
       const formData: FormData = new FormData();
 
-      // Use optional chaining to prevent errors
       formData.append('img', this.selectedFile!);
       formData.append('categoryId', this.productForm.get('categoryId')?.value ?? '');
-      formData.append('name', this.productForm.get('name')?.value ?? '');
+      formData.append('productName', this.productForm.get('productName')?.value ?? '');
       formData.append('price', this.productForm.get('price')?.value ?? '');
       formData.append('description', this.productForm.get('description')?.value ?? '');
 
       this.adminService.addProduct(formData).subscribe(
         res => {
           if (res.id != null) {
-            console.log('Product added: ', res);
+            this.snackBar.open('Product added successfully!', 'Close', {
+              duration: 3000,
+            });
             this.dialogRef.close(true);
           } else {
-            console.log('Something Went Wrong: ', res);
+            console.log('Something went wrong: ', res);
           }
         },
         error => {
           console.error('Error adding product', error);
+          this.snackBar.open('Error adding product', 'Close', {
+            duration: 3000,
+          });
         }
       );
     }
