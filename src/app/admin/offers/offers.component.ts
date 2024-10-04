@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { category } from '../../Models/category';
 import { coupon } from '../../Models/coupon';
 import { AdminService } from '../Services/admin.service';
-import { AddCategoryComponent } from '../add-category/add-category.component';
 import { AddCouponsComponent } from '../add-coupons/add-coupons.component';
 
 @Component({
@@ -28,11 +26,11 @@ export class OffersComponent {
       }
     );
   }
-  deleteCoupon(id : number) :void {
+  deleteCoupon(id : string) :void {
     this.adminService.deleteCoupon(id).subscribe(
       () =>{
         this.loadCoupons();
-        this.snackBar.open('Category Deleted!!!', 'Close', {duration :2000})
+        this.snackBar.open('Coupon Deleted!!!', 'Close', {duration :2000})
       }
     )
   }

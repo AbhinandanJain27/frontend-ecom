@@ -1,11 +1,9 @@
-/* Container styling */
-.container {
+/* .container {
     padding: 24px;
     max-width: 800px;
     margin: 0 auto;
 }
 
-/* Top bar styling */
 .topBar {
     display: flex;
     justify-content: space-between;
@@ -32,7 +30,6 @@
     background-color: #45a049;
 }
 
-/* Table styling */
 .category-table {
     width: 100%;
     border-collapse: collapse;
@@ -58,7 +55,6 @@
     background-color: #ddd;
 }
 
-/* Action buttons styling */
 .actions {
     text-align: center;
 }
@@ -74,4 +70,92 @@
 
 .delete-btn:hover {
     background-color: #e53935;
+} */
+
+/* offers.component.css */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+.topBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.topBar h2 {
+    margin: 0;
+}
+
+.add-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-btn:hover {
+    background-color: #0056b3;
+}
+
+.coupon-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.coupon-table th, .coupon-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.coupon-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: center;
+}
+
+.coupon-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.coupon-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.actions {
+    text-align: center;
+}
+
+.actions button {
+    padding: 5px 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+.disable-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+.disable-btn:hover {
+    background-color: #5a6268;
 }

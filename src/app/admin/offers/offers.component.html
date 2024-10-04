@@ -4,23 +4,35 @@
         <button type="button" class="add-btn" (click)="openMiniWindow()">Add Coupons</button>
     </div>
 
-    <table class="category-table">
+    <table class="coupon-table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Discount</th>
-                <th class="actions">Actions</th>
+                <th>Coupon</th>
+                <th>Status</th>
+                <th>Type</th>
+                <th>Discount Percentage</th>
+                <th>Discount Value</th>
+                <th>Min Amount to Avail</th>
+                <th>Expiration Type</th>
+                <th>Expiration Date</th>
+                <th>Number of Usages</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let coupon of coupons">
-                <!-- <td>{{ coupon.id }}</td>
-                <td>{{ coupon.type }}</td>
-                <td>{{ coupon.name }}</td>
-                <td>{{ coupon.description }}</td> -->
+                <td>{{coupon.couponId}}</td>
+                <td>{{coupon.status}}</td>
+                <td>{{coupon.discountType}}</td>
+                <td>{{coupon.discountPercent}}</td>
+                <td>{{coupon.discountValue}}</td>
+                <td>{{coupon.minAmountToAvail}}</td>
+                <td>{{coupon.expirationType}}</td>
+                <td>{{coupon.expirationDate | date}}</td>
+                <td>{{coupon.expirationTotalUsage}}</td>
                 <td class="actions">
-                    <button type="button" class="delete-btn" (click)="deleteCoupon(12)">Delete</button>
+                    <button type="button" class="delete-btn" (click)="deleteCoupon(coupon.couponId)">Delete</button>
+                    <button type="button" class="disable-btn" (click)="deleteCoupon(coupon.couponId)">Disable</button>
                 </td>
             </tr>
         </tbody>

@@ -67,14 +67,14 @@ export class AdminService {
 
   // Coupons
   addCoupon(coupon: coupon): Observable<coupon> {
-    return this.http.post<category>(`${this.baseUrl}/coupon/addCoupon`, coupon);
+    return this.http.post<coupon>(`${this.baseUrl}/coupon/addCoupon`, coupon);
   }
 
-  deleteCoupon(id: number): Observable<void> {
+  deleteCoupon(id: string): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/coupon/${id}`);
   }
 
   getAllCoupons(): Observable<coupon[]> {
-    return this.http.get<coupon[]>(`${this.baseUrl}/coupon/coupons`);
+    return this.http.get<coupon[]>(`${this.baseUrl}/coupon/getAllCoupons`);
   }
 }

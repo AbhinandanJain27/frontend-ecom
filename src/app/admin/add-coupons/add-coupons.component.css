@@ -1,0 +1,38 @@
+.container {
+    padding: 20px;
+  }
+  
+  .topBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+  }
+  
+  .topBar h2 {
+    margin: 0 auto;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin: 10px 0 5px;
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  input[type="date"] {
+    padding: 10px;
+    /* margin-bottom: 20px; */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  button {
+    align-self: flex-start;
+    margin-top: 20px;
+  }

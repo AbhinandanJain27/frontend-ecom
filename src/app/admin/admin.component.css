@@ -1,3 +1,8 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .admin-layout {
   display: flex;
   flex-direction: column;
@@ -7,6 +12,12 @@
 .sidebar-content {
   display: flex;
   flex: 1;
+}
+.header {
+  padding: 0;
+  margin :0;
+  text-decoration: underline;
+  color: white;
 }
 
 app-sidenav {

@@ -1,23 +1,66 @@
 <div class="container">
-    <div class="topBar">
-      <h2>Add Coupons</h2>
-      <button type="button" (click)="close()">X</button>
-    </div>
-    
-    <form [formGroup]="couponForm" (ngSubmit)="add()">
-  
-      <mat-form-field appearance="outline" class="form-field">
-        <mat-label>Name</mat-label>
-        <input matInput type="text" placeholder="Name" formControlName="name"/>
-        <mat-error *ngIf="couponForm.get('name')?.hasError('required')">This is required!</mat-error>
-      </mat-form-field>
-  
-      <mat-form-field appearance="outline" class="form-field">
-        <mat-label>Discount Percentage</mat-label>
-        <input matInput type="text" placeholder="Discount Percentage" formControlName="discount"/>
-        <mat-error *ngIf="couponForm.get('discount')?.hasError('required')">This is required!</mat-error>
-      </mat-form-field>
-  
-      <button mat-raised-button color="primary" type="submit">Add Coupon</button>
-    </form>
+  <div class="topBar">
+    <h2>Add Product</h2>
+    <button type="button" mat-icon-button (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
   </div>
+
+  <form [formGroup]="form" (ngSubmit)="add()">
+    <!-- Name Field -->
+    <label for="name">Name:</label>
+    <input id="name" type="text" formControlName="couponId"><br><br>
+
+    <!-- Minimum Amount to Redeem Field -->
+    <label for="minAmountToRedeem">Min Amount to Redeem:</label>
+    <input id="minAmountToRedeem" type="number" formControlName="minAmountToAvail"><br><br>
+
+    <!-- Discount Type Radio Buttons -->
+    <div>
+      <label>Discount Type:</label><br>
+      <label>
+        <input type="radio" formControlName="discountType" value="PERCENTAGE">
+        Percentage
+      </label>
+      <label>
+        <input type="radio" formControlName="discountType" value="VALUE">
+        Value
+      </label>
+    </div>
+
+    <!-- Conditional Input for Discount -->
+    <div *ngIf="isPercentage">
+      <label for="discountValue">Discount Percentage:</label>
+      <input id="discountValue" type="number" formControlName="discountPercent">
+    </div>
+    <div *ngIf="!isPercentage">
+      <label for="discountValue">Discount Value:</label>
+      <input id="discountValue" type="number" formControlName="discountValue">
+    </div><br>
+
+    <!-- Expiration Type Radio Buttons -->
+    <div>
+      <label>Expiration Type:</label><br>
+    <label>
+      <input type="radio" formControlName="expirationType" value="DATE">
+      Expiration Date
+    </label>
+    <label>
+      <input type="radio" formControlName="expirationType" value="MAXIMUM_USAGE">
+      Expiration After No. of Usages
+    </label>
+    </div>
+
+    <!-- Conditional Input for Expiration -->
+    <div *ngIf="isExpirationDate">
+      <label for="expirationValue">Expiration Date:</label>
+      <input id="expirationValue" type="date" formControlName="expirationDate">
+    </div>
+    <div *ngIf="!isExpirationDate">
+      <label for="expirationValue">Maximum Number of Usages Allowed:</label>
+      <input id="expirationValue" type="number" formControlName="expirationTotalUsage">
+    </div>
+
+    <button mat-raised-button color="primary" type="submit">Add Product</button>
+  </form>
+</div>

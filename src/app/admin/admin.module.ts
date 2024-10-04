@@ -15,6 +15,8 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AddCouponsComponent } from './add-coupons/add-coupons.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SummaryCardsComponent } from './dashboard/summary-cards/summary-cards.component';
+import { SalesGraphComponent } from './dashboard/sales-graph/sales-graph.component';
 
 
 
@@ -31,7 +33,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     CategoryComponent,
     AddCategoryComponent,
     AddProductComponent,
-    AddCouponsComponent
+    AddCouponsComponent,
+    SummaryCardsComponent,
+    SalesGraphComponent
   ],
   imports: [
     CommonModule,
