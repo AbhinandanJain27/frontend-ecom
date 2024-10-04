@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { coupon } from '../../Models/coupon';
@@ -10,7 +10,7 @@ import { AddCouponsComponent } from '../add-coupons/add-coupons.component';
   templateUrl: './offers.component.html',
   styleUrl: './offers.component.css'
 })
-export class OffersComponent {
+export class OffersComponent implements OnInit{
   coupons: coupon[] = [];
   constructor(public dialog: MatDialog, private adminService: AdminService, private snackBar : MatSnackBar) { }
   ngOnInit(): void {
@@ -34,6 +34,14 @@ export class OffersComponent {
       }
     )
   }
+  disableCoupon(name : string, coupon : coupon) : void{
+      this.adminService.disableCoupon(name, coupon).subscribe(
+        ()=>{
+          this.loadCoupons();
+          this.snackBar.open('Coupon Disabled','close',{duration:2000})
+        }
+      )
+  }
   openMiniWindow(): void {
     const dialogRef = this.dialog.open(AddCouponsComponent, {
       width: '70vw'
@@ -41,6 +49,7 @@ export class OffersComponent {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === true) {
         this.loadCoupons();
+        this.snackBar.open('Coupon Added','close',{duration:2000})
       }
     });
 

@@ -1,21 +1,21 @@
 <div class="container">
     <div class="topBar">
         <h2>Coupons List</h2>
-        <button type="button" class="add-btn" (click)="openMiniWindow()">Add Coupons</button>
+        <button type="button" class="add-btn" (click)="openMiniWindow()">Add Coupon</button>
     </div>
 
     <table class="coupon-table">
         <thead>
             <tr>
-                <th>Coupon</th>
+                <th>ID</th>
                 <th>Status</th>
                 <th>Type</th>
-                <th>Discount Percentage</th>
-                <th>Discount Value</th>
-                <th>Min Amount to Avail</th>
-                <th>Expiration Type</th>
-                <th>Expiration Date</th>
-                <th>Number of Usages</th>
+                <th>% Discount</th>
+                <th>Value</th>
+                <th>Min Amount</th>
+                <th>Expire Type</th>
+                <th>Expire Date</th>
+                <th>Max Allowed Use</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -31,8 +31,9 @@
                 <td>{{coupon.expirationDate | date}}</td>
                 <td>{{coupon.expirationTotalUsage}}</td>
                 <td class="actions">
-                    <button type="button" class="delete-btn" (click)="deleteCoupon(coupon.couponId)">Delete</button>
-                    <button type="button" class="disable-btn" (click)="deleteCoupon(coupon.couponId)">Disable</button>
+                    <button type="button" class="action-btn delete-btn" (click)="deleteCoupon(coupon.couponId)">Delete</button>
+                    <button type="button" class="action-btn disable-btn" (click)="disableCoupon(coupon.couponId, coupon)">Disable</button>
+                    <button type="button" class="action-btn activate-btn" (click)="disableCoupon(coupon.couponId, coupon)">Activate</button>
                 </td>
             </tr>
         </tbody>

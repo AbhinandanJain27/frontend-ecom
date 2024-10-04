@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -10,7 +10,7 @@ import { coupon } from '../../Models/coupon';
   templateUrl: './add-coupons.component.html',
   styleUrl: './add-coupons.component.css'
 })
-export class AddCouponsComponent {
+export class AddCouponsComponent implements OnInit{
 
   form!: FormGroup;
   isPercentage = true;
@@ -19,14 +19,14 @@ export class AddCouponsComponent {
   constructor(public dialogRef: MatDialogRef<AddCouponsComponent>, private fb: FormBuilder, private snackBar: MatSnackBar, private adminService: AdminService) { }
   ngOnInit(): void {
     this.form = this.fb.group({
-      couponId: ['',[Validators.required]],
-      minAmountToAvail: ['',[Validators.required]],
+      couponId: [null,[Validators.required]],
+      minAmountToAvail: [null,[Validators.required]],
       discountType: ['PERCENTAGE',[Validators.required]], // Default to 'percentage'
-      discountPercent : '',
-      discountValue: '', // For percentage or value
+      discountPercent : null,
+      discountValue: null, // For percentage or value
       expirationType: ['DATE',[Validators.required]], // Default to 'expirationDate'
-      expirationDate:'',
-      expirationTotalUsage: '', // For date or number of usages
+      expirationDate:null,
+      expirationTotalUsage: null, // For date or number of usages
     });
 
       // Set initial states based on default values
@@ -40,10 +40,9 @@ export class AddCouponsComponent {
   close(): void {
     this.dialogRef.close();
   }
-  add(): void {console.log(coupon);
+  add(): void {
     if (this.form.valid) {
       const newCoupon: coupon = this.form.value;
-      console.log(newCoupon);
       this.adminService.addCoupon(newCoupon).subscribe(
         (response) => {
           console.log('coupon added Successfully: ', response);

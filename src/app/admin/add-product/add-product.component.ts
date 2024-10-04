@@ -63,10 +63,7 @@ export class AddProductComponent implements OnInit {
 
       this.adminService.addProduct(formData).subscribe(
         res => {
-          if (res.id != null) {
-            this.snackBar.open('Product added successfully!', 'Close', {
-              duration: 3000,
-            });
+          if (res.categoryId != null) {
             this.dialogRef.close(true);
           } else {
             console.log('Something went wrong: ', res);

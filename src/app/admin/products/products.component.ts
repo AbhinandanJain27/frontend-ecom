@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { product } from '../../Models/product';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -11,7 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit{
   products: product[] = [];
   searchProductForm!: FormGroup;
 
@@ -51,7 +51,7 @@ export class ProductsComponent {
         console.error(error);
       }
     );
-    // this.loadProducts();
+    this.loadProducts();
   }
 
   deleteProduct(id: any): void {
@@ -68,16 +68,23 @@ export class ProductsComponent {
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result === true) {
+        this.snackBar.open('Product added successfully!', 'Close', {
+          duration: 3000,
+        });
         this.loadProducts();
       }
     });
   }
+
   updateMiniWindow(): void {
     const dialogRef = this.dialog.open(AddProductComponent, {
       width: '70vw'
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result === true) {
+        this.snackBar.open('Product Updated successfully!', 'Close', {
+          duration: 3000,
+        });
         this.loadProducts();
       }
     });

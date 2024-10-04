@@ -1,82 +1,8 @@
-/* .container {
-    padding: 24px;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.topBar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #e0e0e0;
-    padding-bottom: 16px;
-    margin-bottom: 24px;
-}
-
-.topBar h2 {
-    margin: 0;
-}
-
-.topBar .add-btn {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.topBar .add-btn:hover {
-    background-color: #45a049;
-}
-
-.category-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 24px;
-}
-
-.category-table th, .category-table td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: left;
-}
-
-.category-table th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-}
-
-.category-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-.category-table tr:hover {
-    background-color: #ddd;
-}
-
-.actions {
-    text-align: center;
-}
-
-.delete-btn {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.delete-btn:hover {
-    background-color: #e53935;
-} */
-
-/* offers.component.css */
 .container {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     font-family: Arial, sans-serif;
+    padding: 20px;
 }
 
 .topBar {
@@ -88,6 +14,8 @@
 
 .topBar h2 {
     margin: 0;
+    font-size: 24px;
+    color: #333;
 }
 
 .add-btn {
@@ -97,28 +25,36 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .add-btn:hover {
     background-color: #0056b3;
+    transform: translateY(-2px);
 }
 
+/* Coupon Table */
 .coupon-table {
     width: 100%;
     border-collapse: collapse;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: white;
 }
 
 .coupon-table th, .coupon-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
+    padding: 12px 15px;
     text-align: left;
+    border-bottom: 1px solid #ddd;
 }
 
 .coupon-table th {
-    background-color: #f2f2f2;
-    font-weight: bold;
+    background-color: #f7f7f7;
     text-align: center;
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
 }
 
 .coupon-table tbody tr:nth-child(even) {
@@ -127,19 +63,21 @@
 
 .coupon-table tbody tr:hover {
     background-color: #f1f1f1;
+    transition: background-color 0.3s;
 }
 
 .actions {
     text-align: center;
 }
 
-.actions button {
+.actions .action-btn {
     padding: 5px 10px;
-    margin: 5px;
+    margin: 2px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 14px;
 }
 
 .delete-btn {
@@ -149,6 +87,7 @@
 
 .delete-btn:hover {
     background-color: #c82333;
+    transform: translateY(-2px);
 }
 
 .disable-btn {
@@ -158,4 +97,15 @@
 
 .disable-btn:hover {
     background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+.activate-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.activate-btn:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
 }

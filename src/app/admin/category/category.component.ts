@@ -41,6 +41,7 @@ export class CategoryComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === true) {
         this.loadCategories();
+        this.snackBar.open('Category Added','close',{duration:2000})
       }
     });
 

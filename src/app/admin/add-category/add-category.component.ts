@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -10,7 +10,7 @@ import { category } from '../../Models/category';
   templateUrl: './add-category.component.html',
   styleUrl: './add-category.component.css'
 })
-export class AddCategoryComponent {
+export class AddCategoryComponent implements OnInit{
 
   categoryForm!: FormGroup;
   constructor(public dialogRef: MatDialogRef<AddCategoryComponent>, private fb: FormBuilder, private snackBar: MatSnackBar, private adminService: AdminService) { }

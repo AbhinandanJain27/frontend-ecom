@@ -74,6 +74,10 @@ export class AdminService {
     return this.http.delete<void>(`${this.baseUrl}/coupon/${id}`);
   }
 
+  disableCoupon(name : string,coupon:coupon) : Observable<coupon>{
+    return this.http.put<coupon>(`${this.baseUrl}/coupon/${name}`,coupon);
+  }
+
   getAllCoupons(): Observable<coupon[]> {
     return this.http.get<coupon[]>(`${this.baseUrl}/coupon/getAllCoupons`);
   }
