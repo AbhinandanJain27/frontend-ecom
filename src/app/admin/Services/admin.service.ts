@@ -14,6 +14,14 @@ export class AdminService {
 
   constructor(private http: HttpClient, private router: Router) { }
   
+  // Enum API's For Dynamically getting data from the java backend
+  getCatgoryTypes():Observable<string[]>{
+    return this.http.get<string[]>(`${this.baseUrl}/enums/categoryTypes`);
+  }
+  getOrderStatuses() : Observable<string[]>{
+    return this.http.get<string[]>(`${this.baseUrl}/enums/orderStatuses`);
+  }
+
   // User Details 
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.baseUrl}/user/getAllUsers`);

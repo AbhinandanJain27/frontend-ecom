@@ -11,7 +11,7 @@ import { category } from '../../Models/category';
   styleUrl: './add-category.component.css'
 })
 export class AddCategoryComponent implements OnInit{
-
+  categoryTypes : string[] = [];
   categoryForm!: FormGroup;
   constructor(public dialogRef: MatDialogRef<AddCategoryComponent>, private fb: FormBuilder, private snackBar: MatSnackBar, private adminService: AdminService) { }
   ngOnInit(): void {
@@ -19,7 +19,18 @@ export class AddCategoryComponent implements OnInit{
       type: ['', Validators.required],
       name: [null, [Validators.required]],
       description: [null, [Validators.required]],
-    })
+    });
+    this.loadCategoryTypes();
+  }
+  loadCategoryTypes(){
+    this.adminService.getCatgoryTypes().subscribe(
+      data => {
+        this.categoryTypes = data;
+      },
+      error =>{
+        console.error("Error Fetching Category Types");
+      }
+    )
   }
   close(): void {
     this.dialogRef.close();

@@ -8,13 +8,9 @@
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Select Category</mat-label>
         <mat-select formControlName="type">
-          <mat-option value="FASHION">Fashion</mat-option>
-          <mat-option value="TECHNOLOGY">Technology</mat-option>
-          <mat-option value="BEAUTY">Beauty Products</mat-option>
-          <mat-option value="BABY">Baby & Toys</mat-option>
-          <mat-option value="GROCERY">Grocery</mat-option>
-          <mat-option value="DECOR">Home Decor</mat-option>
-          <mat-option value="SPORTS">Sports</mat-option>
+          <mat-option *ngFor="let categoryType of categoryTypes" [value]="categoryType">
+            {{ categoryType }}
+          </mat-option>
         </mat-select>
         <mat-error *ngIf="categoryForm.get('type')?.hasError('required')">This is required!</mat-error>
       </mat-form-field>
