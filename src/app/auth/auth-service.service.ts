@@ -42,6 +42,19 @@ export class AuthServiceService {
     return sessionStorage['UserRole'];
   }
 
+  private getStorageItem(key : string) : string | null {
+    if(typeof window !== 'undefined' && sessionStorage){
+      return window.sessionStorage.getItem(key);
+    }
+    return null;
+  }
+
+  private setStorageItem(key: string, value: string):void{
+    if(typeof window !== 'undefined' && sessionStorage){
+      window.sessionStorage.setItem(key,value);
+    }
+  }
+
 
   logout() {
     sessionStorage.removeItem('token');

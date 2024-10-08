@@ -9,12 +9,14 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { provideHttpClient } from '@angular/common/http';
+import { NotAuthorizedComponent } from './auth/not-authorized/not-authorized.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
+    NotAuthorizedComponent,
   ],
   imports: [
     BrowserModule,

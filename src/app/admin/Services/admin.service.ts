@@ -19,7 +19,7 @@ export class AdminService {
       'Authorization', `Bearer ${sessionStorage.getItem("token")}`
      )
      .set(
-      'content-type','application-json'
+      'content-type','application/json'
      )
   }
   
