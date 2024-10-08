@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthServiceService } from '../auth-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -8,7 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent{
 
   credentials = { email: '', password: '' };
 
@@ -18,30 +18,32 @@ export class LoginComponent {
     this.authService.login(this.credentials).subscribe(
       response => {
         if (response.message === 'Login successful!') {
+          sessionStorage.setItem("token",response.token);
+          sessionStorage.setItem("email",response.email);
           if (response.role === 'ADMIN') {
+            sessionStorage.setItem("UserRole",response.role);
             this.snackBar.open(response.message,'close',{
               duration :3000,
             });
             this.router.navigate(['/admin']); // Redirect to admin dashboard
           } else {
+            sessionStorage.setItem("UserRole",response.role);
             this.snackBar.open(response.message,'close',{
               duration :3000,
             });
             this.router.navigate(['/home']); // Redirect to user home
           }
         } else {
-          this.snackBar.open(response.message,'close',{
+          this.snackBar.open('Invalid Credentials!!','close',{
             duration :3000,
           });
-          alert(response.message); // Handle different messages appropriately
         }
       },
       error => {
-        this.snackBar.open(error.message,'close',{
+        this.snackBar.open('Login Failed Try Again with the correct Credentials','close',{
           duration :3000,
         });
-        console.error('Login failed', error);
-        alert(error.error.message || 'Login Failed'); // Error message from the backend
+
       }
     );
   }

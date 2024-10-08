@@ -34,12 +34,19 @@ export class AuthServiceService {
   }
 
   isAuthenticated(): boolean {
-    const token = localStorage.getItem('token');
-    return !this.jwtHelper.isTokenExpired(token);
+    const token = window.sessionStorage.getItem('token');
+    return !this.jwtHelper.isTokenExpired(token) || token != null;
   }
 
+  getUserRole() : string | null{
+    return sessionStorage['UserRole'];
+  }
+
+
   logout() {
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('email');
+    sessionStorage.removeItem('UserRole');
     this.router.navigate(['/login']);
   }
 }
