@@ -1,0 +1,35 @@
+.container{
+    margin: 40vh;
+    font-size: large;
+}
+.unauthorized-title {
+    color: #D32F2F; /* Warning color (red) */
+    font-size: 2em;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .unauthorized-message {
+    color: #555; /* Subtle text color */
+    font-size: 1.2em;
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .unauthorized-action {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .unauthorized-action a {
+    color: #1976D2; /* Primary link color */
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 1px dashed #1976D2;
+    transition: color 0.3s, border-bottom 0.3s;
+  }
+  
+  .unauthorized-action a:hover {
+    color: #D32F2F;
+    border-bottom: 1px dashed #D32F2F;
+  }
