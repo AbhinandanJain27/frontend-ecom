@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
-import { User } from '../Models/user';
+import { User } from '../shared/Models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -41,20 +41,6 @@ export class AuthServiceService {
   getUserRole() : string | null{
     return sessionStorage['UserRole'];
   }
-
-  private getStorageItem(key : string) : string | null {
-    if(typeof window !== 'undefined' && sessionStorage){
-      return window.sessionStorage.getItem(key);
-    }
-    return null;
-  }
-
-  private setStorageItem(key: string, value: string):void{
-    if(typeof window !== 'undefined' && sessionStorage){
-      window.sessionStorage.setItem(key,value);
-    }
-  }
-
 
   logout() {
     sessionStorage.removeItem('token');

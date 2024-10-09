@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminService } from '../Services/admin.service';
-import { category } from '../../Models/category';
+import { category } from '../../shared/Models/category';
 
 @Component({
   selector: 'app-add-category',

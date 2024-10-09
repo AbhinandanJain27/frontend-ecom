@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { category } from '../../Models/category';
+import { category } from '../../shared/Models/category';
 import { AdminService } from '../Services/admin.service';
 import { Router } from '@angular/router';
 

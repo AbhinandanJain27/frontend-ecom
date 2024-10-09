@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminService } from '../Services/admin.service';
-import { coupon } from '../../Models/coupon';
+import { coupon } from '../../shared/Models/coupon';
 
 @Component({
   selector: 'app-add-coupons',

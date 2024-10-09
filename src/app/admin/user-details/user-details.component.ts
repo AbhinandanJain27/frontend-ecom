@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';  
-import { User } from '../../Models/user';
+import { User } from '../../shared/Models/user';
 import { AdminService } from '../Services/admin.service';
 import { AuthServiceService } from '../../auth/auth-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';

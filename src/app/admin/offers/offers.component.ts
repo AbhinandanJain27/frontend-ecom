@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { coupon } from '../../Models/coupon';
+import { coupon } from '../../shared/Models/coupon';
 import { AdminService } from '../Services/admin.service';
 import { AddCouponsComponent } from '../add-coupons/add-coupons.component';
 

@@ -2,9 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { User } from '../../Models/user';
-import { category } from '../../Models/category';
-import { coupon } from '../../Models/coupon';
+import { User } from '../../shared/Models/user';
+import { category } from '../../shared/Models/category';
+import { coupon } from '../../shared/Models/coupon';
 
 @Injectable({
   providedIn: 'root'

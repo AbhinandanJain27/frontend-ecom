@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthServiceService } from '../auth-service.service';
 import { Router } from '@angular/router';
-import { User } from '../../Models/user';
+import { User } from '../../shared/Models/user';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 
