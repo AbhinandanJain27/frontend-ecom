@@ -51,7 +51,6 @@ export class ProductsComponent implements OnInit{
         console.error(error);
       }
     );
-    this.loadProducts();
   }
 
   deleteProduct(id: any): void {

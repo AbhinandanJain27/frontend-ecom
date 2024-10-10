@@ -4,7 +4,7 @@ export class order{
     // cart < cartItems >
     address ?: string;
     amount ?: number;
-    orderDtae ?: Date;
+    orderDate ?: Date;
     orderStatus ?: string;
 
 }
