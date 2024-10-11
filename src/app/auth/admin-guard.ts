@@ -10,7 +10,7 @@ export class AdminGuard implements CanActivate {
   constructor(private authService: AuthServiceService, private router: Router) {}
 
   canActivate(): boolean {
-    if (this.authService.getUserRole() !== 'ADMIN') {
+    if (this.authService.isAuthenticated() && this.authService.getUserRole() !== 'ADMIN') {
       this.router.navigate(['/unauthorized']);
       return false;
     }

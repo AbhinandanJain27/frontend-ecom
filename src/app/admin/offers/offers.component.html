@@ -32,8 +32,8 @@
                 <td>{{coupon.expirationTotalUsage}}</td>
                 <td class="actions">
                     <button type="button" class="action-btn delete-btn" (click)="deleteCoupon(coupon.couponId)">Delete</button>
-                    <button type="button" class="action-btn disable-btn" (click)="disableCoupon(coupon.couponId, coupon)">Disable</button>
-                    <button type="button" class="action-btn activate-btn" (click)="disableCoupon(coupon.couponId, coupon)">Activate</button>
+                    <button *ngIf="coupon.status === 'ACTIVE'" type="button" class="action-btn disable-btn" (click)="changeCouponStatus(coupon.couponId, coupon)">Disable</button>
+                    <button *ngIf="coupon.status === 'EXPIRED'" type="button" class="action-btn activate-btn" (click)="changeCouponStatus(coupon.couponId, coupon)">Activate</button>
                 </td>
             </tr>
         </tbody>

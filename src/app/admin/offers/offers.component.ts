@@ -34,7 +34,7 @@ export class OffersComponent implements OnInit{
       }
     )
   }
-  disableCoupon(name : string, coupon : coupon) : void{
+  changeCouponStatus(name : string, coupon : coupon) : void{
       this.adminService.disableCoupon(name, coupon).subscribe(
         ()=>{
           this.loadCoupons();
@@ -52,6 +52,5 @@ export class OffersComponent implements OnInit{
         this.snackBar.open('Coupon Added','close',{duration:2000})
       }
     });
-
   }
 }

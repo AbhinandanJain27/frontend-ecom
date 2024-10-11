@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 import { User } from '../shared/Models/user';
+import { Platform } from '@angular/cdk/platform';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AuthServiceService {
   private signupUrl = 'http://localhost:8080/user/register';
   private userUrl = 'http://localhost:8080/user';
 
-  constructor(private http: HttpClient, private router: Router, private jwtHelper: JwtHelperService) { }
+  constructor(private http: HttpClient, private router: Router, private jwtHelper: JwtHelperService, private platform: Platform) { }
 
   login(credentials: any): Observable<any> {
     return this.http.post(this.loginUrl, credentials);
@@ -34,11 +35,14 @@ export class AuthServiceService {
   }
 
   isAuthenticated(): boolean {
-    const token = window.sessionStorage.getItem('token');
-    return !this.jwtHelper.isTokenExpired(token) || token != null;
+    if (this.platform.isBrowser) {
+      const token = window.sessionStorage.getItem('token');
+      return !this.jwtHelper.isTokenExpired(token) || token != null;
+    }
+    return false;
   }
 
-  getUserRole() : string | null{
+  getUserRole(): string | null {
     return sessionStorage['UserRole'];
   }
 

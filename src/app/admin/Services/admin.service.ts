@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { User } from '../../shared/Models/user';
 import { category } from '../../shared/Models/category';
 import { coupon } from '../../shared/Models/coupon';
+import { AuthServiceService } from '../../auth/auth-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ import { coupon } from '../../shared/Models/coupon';
 export class AdminService {
   private baseUrl = "http://localhost:8080"
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http:HttpClient, private router:Router, private authService : AuthServiceService) { }
 
   private createAuthorizationHeader(): HttpHeaders{
      return new HttpHeaders().set(
@@ -25,11 +26,17 @@ export class AdminService {
   
   // Enum API's For Dynamically getting data from the java backend
   getCatgoryTypes():Observable<string[]>{
+    if(! this.authService.isAuthenticated()){
+      this.authService.logout();
+    }
     return this.http.get<string[]>(`${this.baseUrl}/enums/categoryTypes`,{
       headers : this.createAuthorizationHeader(),
     });
   }
   getOrderStatuses() : Observable<string[]>{
+    if(! this.authService.isAuthenticated()){
+      this.authService.logout();
+    }
     return this.http.get<string[]>(`${this.baseUrl}/enums/orderStatuses`,{
       headers : this.createAuthorizationHeader(),
     });
@@ -37,6 +44,9 @@ export class AdminService {
 
   // User Details 
   getAllUsers(): Observable<User[]> {
+    if(! this.authService.isAuthenticated()){
+      this.authService.logout();
+    }
     return this.http.get<User[]>(`${this.baseUrl}/user/getAllUsers`,{
       headers : this.createAuthorizationHeader(),
     });

@@ -10,7 +10,7 @@ import { AuthServiceService } from './auth-service.service';
     constructor(private authService: AuthServiceService, private router: Router) {}
   
     canActivate(): boolean {
-      if (this.authService.getUserRole() !== 'CUSTOMER') {
+      if (this.authService.isAuthenticated() && this.authService.getUserRole() !== 'CUSTOMER') {
         this.router.navigate(['/unauthorized']);
         return false;
       }
