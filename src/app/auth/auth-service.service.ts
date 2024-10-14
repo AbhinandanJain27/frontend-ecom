@@ -21,17 +21,17 @@ export class AuthServiceService {
     return this.http.post(this.loginUrl, credentials);
   }
 
-  signup(user: User): Observable<any> {
-    return this.http.post(this.signupUrl, user);
+  signup(user: User): Observable<User> {
+    return this.http.post<User>(this.signupUrl, user);
   }
 
-  getCurrentUser(): Observable<any> {
-    return this.http.get(this.userUrl);
+  getCurrentUser(): Observable<User> {
+    return this.http.get<User>(this.userUrl);
   }
 
-  getUserByEmail(email: string): Observable<any> {
+  getUserByEmail(email: string): Observable<User> {
     const url = `${this.userUrl}/${email}`;
-    return this.http.get<any>(url);
+    return this.http.get<User>(url);
   }
 
   isAuthenticated(): boolean {

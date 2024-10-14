@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthServiceService } from '../auth-service.service';
 import { Router } from '@angular/router';
 import { User } from '../../shared/Models/user';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -10,14 +11,27 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
 })
-export class SignupComponent {
-  registerUser : User = new User('','',0,'');
-  confirmPassword : string = '';
-  passwordEquality: boolean = false;
+export class SignupComponent implements OnInit{
 
-  constructor(private authService: AuthServiceService, private router: Router, private snackBar : MatSnackBar) {}
+  registerUserForm !: FormGroup;
+  passwordEquality : boolean = false;
+  mobileNum !: number; 
+  existingUser : boolean = false;
+
+  constructor(private fb:FormBuilder, private authService: AuthServiceService, private router: Router, private snackBar : MatSnackBar) {}
+  
+  ngOnInit(): void {
+    this.registerUserForm = this.fb.group({
+      name:[null,[Validators.required]],
+      email:[null, [Validators.required, Validators.email]],
+      mobileNumber : [null, [Validators.required]],
+      password: [null, [Validators.required]],
+      confirmPassword : [null,[Validators.required]]
+    })
+  } 
+  
   onPasswordType() {
-    if (this.registerUser.password === this.confirmPassword) {
+    if (this.registerUserForm.get('password')?.value === this.registerUserForm.get('confirmPassword')?.value) {
       this.passwordEquality = false;
     } else {
       this.passwordEquality = true;
@@ -33,36 +47,40 @@ export class SignupComponent {
     return false;
   }
   onSubmit(){
-    if (
-      this.registerUser.name === '' ||
-      this.registerUser.email === '' ||
-      this.registerUser.mobileNumber === 0||
-      this.registerUser.password === ''
-    ) {
+    this.mobileNum = this.registerUserForm.get('mobileNumber')?.value;
+    if (this.registerUserForm.valid) {
+      if (this.registerUserForm.get('password')?.value !== this.registerUserForm.get('confirmPassword')?.value) {
+        alert("Passwords Do not Match");
+        return;
+      }else{
+        this.passwordEquality = true;
+      }
+
+      if(!this.isValidNumber(this.mobileNum)){
+        alert("Enter A Valid Mobile Number");
+        return;
+      }
+      
+      this.authService.getUserByEmail(this.registerUserForm.get('email')?.value).subscribe(res => {
+          this.existingUser = true;
+        },
+        error =>{
+          this.existingUser = false;
+      });
+
+      if(!this.existingUser){
+        this.signup();
+      }
+    }else{
       alert('Enter all fields!');
       return;
     }
-    if(this.isValidNumber(this.registerUser.mobileNumber)===false){
-      alert('Enter a valid Mobile Number');
-      return;
-    }
-    if (this.registerUser.password != this.confirmPassword) {
-      alert('Passwords not matching !');
-      return;
-    }
-    this.authService.getUserByEmail(this.registerUser.email).subscribe({
-      next: (response)=>{
-        alert();
-        this.registerUser.email='';
-      },
-      error:(error)=>{
-        this.signup();
-      }
-    })
+    
   }
   signup() {
-    this.authService.signup(this.registerUser).subscribe(res => {
-      this.snackBar.open(res.message,'close',{
+    const newUser : User = this.registerUserForm.value;
+    this.authService.signup(newUser).subscribe(res => {
+      this.snackBar.open("Registration Succesful !!",'close',{
         duration :3000,
       });
       this.router.navigate(['/login']);
@@ -73,4 +91,5 @@ export class SignupComponent {
       console.error('Signup failed', error);
     });
   }
+
 }
