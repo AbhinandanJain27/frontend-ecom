@@ -1,7 +1,7 @@
 <div class="navbar">
     <ul>
         <div>
-            <li> <a routerLink="/home   " routerLinkActive="active">Ecommerce</a> </li>
+            <li> <a routerLink="/home" routerLinkActive="active">Ecommerce</a> </li>
             <div class="search">
                 <form [formGroup]="searchProductForm" class="search-form" (submit)="searchProduct()">
                     <mat-form-field appearance="outline" class="form-field">
@@ -16,11 +16,11 @@
             </div>
         </div>
         <div>
-            <li> <a routerLink="Category" routerLinkActive="active">Category</a> </li>
-            <li> <a routerLink="myWishlist" routerLinkActive="active">Wishlist</a>  </li>
+            <!-- <li> <a routerLink="Category" routerLinkActive="active">Category</a> </li> -->
             <li> <a routerLink="myOrders" routerLinkActive="active"> My Orders</a></li>
             <li> <a routerLink="cart" routerLinkActive="active"> <mat-icon>shopping_cart</mat-icon></a></li>
-            <li> <a routerLink="myProfile" routerLinkActive="active">Profile</a> </li>
+            <li> <a routerLink="myWishlist" routerLinkActive="active"> ♥ </a>  </li>
+            <li> <a routerLink="myProfile" routerLinkActive="active"><mat-icon>person</mat-icon></a> </li>
         </div>
     </ul>
 
