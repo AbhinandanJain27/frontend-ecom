@@ -3,6 +3,7 @@ import { AuthServiceService } from '../../auth/auth-service.service';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { product } from '../../shared/Models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,17 @@ export class CustomerService {
 
   getAllProduts(): Observable<any> {
     return this.http.get(`${this.baseUrl}/product/products`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  addToCart(productId : number) : Observable<any>{
+    const itemDto = {
+      productId : productId,
+      email : sessionStorage.getItem("email"), 
+    }
+    console.log(itemDto);
+    return this.http.post(`${this.baseUrl}/cart/addToCart`,itemDto, {
       headers: this.createAuthorizationHeader(),
     });
   }

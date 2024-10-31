@@ -29,4 +29,13 @@ export class CustomerComponent implements OnInit {
       }
     );
   }
+
+  addToCart(id: number){
+    this.customerService.addToCart(id).subscribe( res=>{
+      alert("Product Added To cart");
+    },
+    err =>{
+      alert("Product Not Added!")
+    }
+  )}
 }
