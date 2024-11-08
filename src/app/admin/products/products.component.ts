@@ -18,7 +18,7 @@ export class ProductsComponent implements OnInit{
   constructor(public dialog: MatDialog, private adminService: AdminService, private snackBar: MatSnackBar, private fb: FormBuilder) { }
   ngOnInit(): void {
     this.searchProductForm = this.fb.group({
-      title: ['', Validators.required],
+      title: [''],
     });
 
     this.loadProducts();
@@ -41,6 +41,10 @@ export class ProductsComponent implements OnInit{
   searchProduct() {
     this.products = [];
     const title = this.searchProductForm.get('title')!.value;
+    if(title == ''){
+      this.loadProducts();
+      return;
+    }
     this.adminService.getAllProductsByName(title).subscribe(res => {
       res.forEach((element: product) => {
         element.processedImage = 'data:image/jpeg;base64,' + element.byteImg;

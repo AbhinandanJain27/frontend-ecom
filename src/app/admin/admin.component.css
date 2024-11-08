@@ -1,32 +1,40 @@
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-.admin-layout {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  /* width: calc(100vw - 200px); */
-}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-.sidebar-content {
-  display: flex;
-  flex: 1;
-}
+  .admin-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
 
-.header {
-  padding: 0;
-  margin :0;
-  text-decoration: underline;
-  color: white;
-}
+  .sidebar-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
 
-app-sidenav {
-  width: 180px;
-}
+  .header {
+    padding: 0;
+    margin: 0;
+    background-color: #333;
+    text-decoration: underline;
+    color: white;
+  }
 
-.content {
-  flex: 1;
-  padding: 20px;
-}
+  app-sidenav {
+    width: 180px;
+    background-color: #f4f4f4;
+    position: relative;
+    left: 0;
+    top: 0;
+    min-height: calc(100vh - 100px);
+  }
+
+  .content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+  }

@@ -1,6 +1,40 @@
-<div class="dashboard">
+<!-- <div class="dashboard">
   <h1>Admin Dashboard</h1>
   <app-summary-cards></app-summary-cards>
   <app-orders></app-orders>
   <app-sales-graph></app-sales-graph>
+</div> -->
+<div class="dashboard">
+  <div class="stats-row">
+    <div class="stat-card">Total Orders: {{ stats.totalOrders }}</div>
+    <div class="stat-card">Cancelled Orders: {{ stats.cancelledOrders }}</div>
+    <div class="stat-card">Pending Orders: {{ stats.pendingOrders }}</div>
+    <div class="stat-card">Total Revenue: ${{ stats.totalRevenue }}</div>
+    <div class="stat-card">Profit: ${{ stats.profit }}</div>
+  </div>
+
+  <div class="content-row">
+    <div class="card">
+      <h2>Recent Orders</h2>
+      <ul>
+        <li *ngFor="let order of recentOrders">
+          {{ order.item }} - Quantity: {{ order.quantity }} - Status: {{ order.status }}
+        </li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Sales Graph</h2>
+      <div class="sales-graph">[Graph Component Here]</div>
+    </div>
+
+    <div class="card">
+      <h2>Low Stock Items</h2>
+      <ul>
+        <li *ngFor="let item of lowStockItems">
+          {{ item.item }} - Stock: {{ item.stock }}
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

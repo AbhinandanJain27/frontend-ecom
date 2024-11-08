@@ -6,6 +6,7 @@ import { User } from '../../shared/Models/user';
 import { category } from '../../shared/Models/category';
 import { coupon } from '../../shared/Models/coupon';
 import { AuthServiceService } from '../../auth/auth-service.service';
+import { product } from '../../shared/Models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -77,7 +78,8 @@ export class AdminService {
   }
 
   addProduct(productDto: any): Observable<any> {
-    return this.http.post<category>(`${this.baseUrl}/product/addProduct`, productDto,{
+    console.log(`hello`,productDto);
+    return this.http.post<product>(`${this.baseUrl}/product/addProduct`, productDto,{
       headers : this.createAuthorizationHeader(),
     });
   }
@@ -105,7 +107,7 @@ export class AdminService {
   }
 
   deleteCategory(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/category/${id},`,{
+    return this.http.delete<void>(`${this.baseUrl}/category/${id}`,{
       headers : this.createAuthorizationHeader(),
     });
   }

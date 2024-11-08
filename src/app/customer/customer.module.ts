@@ -7,13 +7,15 @@ import { CustomerComponent } from './customer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { MaterialModule } from '../shared/material/material.module';
+import { CartComponent } from './cart/cart.component';
 
 
 @NgModule({
   declarations: [
     CustomerComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,

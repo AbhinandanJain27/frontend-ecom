@@ -29,8 +29,14 @@ export class CustomerService {
       productId : productId,
       email : sessionStorage.getItem("email"), 
     }
-    console.log(itemDto);
     return this.http.post(`${this.baseUrl}/cart/addToCart`,itemDto, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  getCart() : Observable<any>{
+    const email = sessionStorage.getItem('email');
+    return this.http.get(`${this.baseUrl}/cart/${email}`, {
       headers: this.createAuthorizationHeader(),
     });
   }

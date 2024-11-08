@@ -56,7 +56,7 @@ export class AddProductComponent implements OnInit {
       const formData: FormData = new FormData();
 
       formData.append('img', this.selectedFile!);
-      formData.append('categoryId', this.productForm.get('categoryId')?.value ?? '');
+      formData.append('categoryId', this.productForm.get('categoryId')?.value ?? '');      
       formData.append('productName', this.productForm.get('productName')?.value ?? '');
       formData.append('price', this.productForm.get('price')?.value ?? '');
       formData.append('description', this.productForm.get('description')?.value ?? '');
