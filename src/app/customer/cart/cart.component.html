@@ -3,7 +3,6 @@
     <div class="cart">
         <div class="cart-item" *ngFor="let item of cartItems">
             <div class="product-info">
-                <div class="image-name-group">
                     <div class="product-image">
                         <img [src]="item.processedImg" alt="product-image" />
                     </div>
@@ -12,12 +11,6 @@
                             {{item.productName}}
                         </div>
                     </div>
-                </div>
-                <div class="quantity-price-group">
-                    <div class="item-price">
-                        {{item.price | currency : 'INR'}}
-                    </div>
-                    
                     <div class="quantity-controls">
                         <button mat-icon-button [disabled]="item.quantity == 1">
                             <mat-icon>remove_circle_outline</mat-icon>
@@ -28,7 +21,9 @@
                         </button>
                     </div>
                     
-                </div>
+                    <div class="item-price">
+                        {{item.price | currency : 'INR'}}
+                    </div>
             </div>
         </div>
 
