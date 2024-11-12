@@ -31,6 +31,7 @@ export class AddProductComponent implements OnInit {
       productName: [null, [Validators.required]],
       price: [null, [Validators.required]],
       description: [null, [Validators.required]],
+      quantity : [null, [Validators.required]]
     });
 
     this.getAllCategories();
@@ -56,13 +57,15 @@ export class AddProductComponent implements OnInit {
       const formData: FormData = new FormData();
 
       formData.append('img', this.selectedFile!);
-      formData.append('categoryId', this.productForm.get('categoryId')?.value ?? '');      
+      formData.append('categoryId', this.productForm.get('categoryId')?.value ?? '');  
       formData.append('productName', this.productForm.get('productName')?.value ?? '');
       formData.append('price', this.productForm.get('price')?.value ?? '');
+      formData.append('price', this.productForm.get('quantity')?.value ?? '');
       formData.append('description', this.productForm.get('description')?.value ?? '');
-
       this.adminService.addProduct(formData).subscribe(
         res => {
+          console.log(res);
+          alert("calling the api in res")
           if (res.categoryId != null) {
             this.dialogRef.close(true);
           } else {
@@ -70,6 +73,7 @@ export class AddProductComponent implements OnInit {
           }
         },
         error => {
+          alert("calling the api in error")
           console.error('Error adding product', error);
           this.snackBar.open('Error adding product', 'Close', {
             duration: 3000,

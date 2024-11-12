@@ -9,8 +9,8 @@ export class coupon {
     discountPercent ?: number;
     discountValue ?: number;
     expirationDate ?: Date;
-    expirationTotalUsage ?: number;
-
+    maximumAllowedUsages ?: number;
+    currentUsages ?: number;
 
     constructor(couponId: string, minAmountToAvail: number, discountType : string, expirationType : string) {
         this.couponId = couponId;

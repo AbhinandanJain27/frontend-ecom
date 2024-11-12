@@ -78,7 +78,6 @@ export class AdminService {
   }
 
   addProduct(productDto: any): Observable<any> {
-    console.log(`hello`,productDto);
     return this.http.post<product>(`${this.baseUrl}/product/addProduct`, productDto,{
       headers : this.createAuthorizationHeader(),
     });
@@ -134,6 +133,12 @@ export class AdminService {
 
   disableCoupon(name : string,coupon:coupon) : Observable<coupon>{
     return this.http.put<coupon>(`${this.baseUrl}/coupon/${name}`,coupon,{
+      headers : this.createAuthorizationHeader(),
+    });
+  }
+
+  getAllActiveCoupons(): Observable<coupon[]> {
+    return this.http.get<coupon[]>(`${this.baseUrl}/coupon/getAllActiveCoupons`,{
       headers : this.createAuthorizationHeader(),
     });
   }

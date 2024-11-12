@@ -46,8 +46,8 @@
       Expiration Date
     </label>
     <label>
-      <input type="radio" formControlName="expirationType" value="MAXIMUM_USAGE">
-      Expiration After No. of Usages
+      <input type="radio" formControlName="expirationType" value="ALLOWED_USAGE">
+      Maximum Allowed Usages
     </label>
     </div>
 
@@ -58,9 +58,9 @@
     </div>
     <div *ngIf="!isExpirationDate">
       <label for="expirationValue">Maximum Number of Usages Allowed:</label>
-      <input id="expirationValue" type="number" formControlName="expirationTotalUsage">
+      <input id="expirationValue" type="number" formControlName="maximumAllowedUsages">
     </div>
 
-    <button mat-raised-button color="primary" type="submit">Add Product</button>
+    <button mat-raised-button color="primary" type="submit">Add Coupon</button>
   </form>
 </div>

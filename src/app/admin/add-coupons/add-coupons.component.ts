@@ -26,7 +26,7 @@ export class AddCouponsComponent implements OnInit{
       discountValue: null, // For percentage or value
       expirationType: ['DATE',[Validators.required]], // Default to 'expirationDate'
       expirationDate:null,
-      expirationTotalUsage: null, // For date or number of usages
+      maximumAllowedUsage: null, // For date or number of usages
     });
 
       // Set initial states based on default values

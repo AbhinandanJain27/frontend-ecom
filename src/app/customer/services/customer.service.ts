@@ -3,7 +3,7 @@ import { AuthServiceService } from '../../auth/auth-service.service';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { product } from '../../shared/Models/product';
+import { coupon } from '../../shared/Models/coupon';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +38,12 @@ export class CustomerService {
     const email = sessionStorage.getItem('email');
     return this.http.get(`${this.baseUrl}/cart/${email}`, {
       headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  getAllActiveCoupons(): Observable<coupon[]> {
+    return this.http.get<coupon[]>(`${this.baseUrl}/coupon/getAllActiveCoupons`,{
+      headers : this.createAuthorizationHeader(),
     });
   }
 
