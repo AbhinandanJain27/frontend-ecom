@@ -52,13 +52,13 @@ export class AdminService {
       headers : this.createAuthorizationHeader(),
     });
   }
-  deleteUser(email: string): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/user/${email}`,{
+  deleteUser(): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/user`,{
       headers : this.createAuthorizationHeader(),
     });
   }
-  modifyUserStatus(email: string, user: User): Observable<User> {
-    return this.http.put<User>(`${this.baseUrl}/user/modifyAccountStatus/${email}`, user,{
+  modifyUserStatus(user: User): Observable<User> {
+    return this.http.put<User>(`${this.baseUrl}/user/modifyAccountStatus`, user,{
       headers : this.createAuthorizationHeader(),
     });
   }

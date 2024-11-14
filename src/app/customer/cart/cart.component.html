@@ -3,35 +3,65 @@
     <div class="cart">
         <div class="cart-item" *ngFor="let item of cartItems">
             <div class="product-info">
-                    <div class="product-image">
-                        <img [src]="item.processedImg" alt="product-image" />
+                <div class="product-image">
+                    <img [src]="item.processedImg" alt="product-image" />
+                </div>
+                <div class="product-details">
+                    <div class="item-name" [ngClass]="{'highlight': item.highlighted}">
+                        {{item.productName}}
                     </div>
-                    <div class="product-details">
-                        <div class="item-name" [ngClass]="{'highlight': item.highlighted}">
-                            {{item.productName}}
-                        </div>
-                    </div>
-                    <div class="quantity-controls">
-                        <button mat-icon-button [disabled]="item.quantity == 1">
-                            <mat-icon>remove_circle_outline</mat-icon>
-                        </button>
-                        <span class="quantity">{{item.quantity}}</span>
-                        <button mat-icon-button>
-                            <mat-icon>add_circle_outline</mat-icon>
-                        </button>
-                    </div>
-                    
-                    <div class="item-price">
-                        {{item.price | currency : 'INR'}}
-                    </div>
+                </div>
+                <div class="quantity-controls">
+                    <button mat-icon-button [disabled]="item.quantity == 1">
+                        <mat-icon>remove_circle_outline</mat-icon>
+                    </button>
+                    <span class="quantity">{{item.quantity}}</span>
+                    <button mat-icon-button>
+                        <mat-icon>add_circle_outline</mat-icon>
+                    </button>
+                </div>
+
+                <div class="item-price">
+                    {{item.price | currency : 'INR'}}
+                </div>
             </div>
         </div>
 
-        <div class="total">
-            <strong>Total: {{getTotalPrice() | currency : 'INR'}}</strong>
+        <div class="promo-code">
+            <mat-form-field class="mat-form-field" [ngClass]="{'invalid': isInvalidCoupon}">
+                <input matInput placeholder="Enter promo code" [(ngModel)]="promoCode" />
+
+                <button mat-icon-button *ngIf="promoCode" (click)="applyPromoCode()" class="" [ngClass]="{'success': isPromoApplied }">
+                    <span *ngIf="!isPromoApplied" class="modify">Apply</span>
+                    <mat-icon *ngIf="isPromoApplied">check_circle</mat-icon>
+                </button>
+                <button mat-icon-button *ngIf="isPromoApplied" (click)="removePromoCode()">
+                    <span>Remove</span>
+                </button>
+                <button mat-icon-button *ngIf="!promoCode" (click)="openCouponDialog()">
+                    <mat-icon>local_offer</mat-icon>
+                </button>
+
+            </mat-form-field>
         </div>
-        <button mat-raised-button color="primary">Place Order</button>
+
+        <div *ngIf="isInvalidCoupon" class="invalid-message">
+            * {{ invalidCouponMessage }}
+        </div>
+
+        <div class="total">
+            <strong>Subtotal: {{getTotalPrice() | currency : 'INR'}}</strong>
+            <div>
+                <strong>Discount: -{{getDiscount() | currency : 'INR'}}</strong>
+            </div>
+            <strong>Total: {{getTotalAmount() | currency : 'INR'}}</strong>
+        </div>
+        <button mat-raised-button color="primary">Proceed TO Checkout</button>
     </div>
+</div>
+
+<div>
+
 </div>
 
 <ng-template #emptyCart>

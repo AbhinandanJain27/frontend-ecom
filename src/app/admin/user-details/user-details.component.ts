@@ -34,7 +34,7 @@ export class UserDetailsComponent implements OnInit {
   }
 
   deleteUser(email: string): void {
-    this.adminService.deleteUser(email).subscribe(
+    this.adminService.deleteUser().subscribe(
       () => {
         this.loadUsers(); // Reload users after deletion
         this.snackBar.open('User deleted successfully', 'Close', { duration: 3000 });
@@ -51,7 +51,7 @@ export class UserDetailsComponent implements OnInit {
     // Create a new user object with updated status
     const updatedUser: User = { ...user, accountStatus: updatedStatus };
     console.log(user.email)
-    this.adminService.modifyUserStatus(user.email, updatedUser).subscribe(
+    this.adminService.modifyUserStatus(updatedUser).subscribe(
       () => {
         this.loadUsers(); // Reload users after update
         this.snackBar.open('User status updated successfully', 'Close', { duration: 3000 });

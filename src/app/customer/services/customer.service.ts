@@ -35,16 +35,25 @@ export class CustomerService {
   }
 
   getCart() : Observable<any>{
-    const email = sessionStorage.getItem('email');
-    return this.http.get(`${this.baseUrl}/cart/${email}`, {
+    return this.http.get(`${this.baseUrl}/cart`, {
       headers: this.createAuthorizationHeader(),
     });
   }
 
-  getAllActiveCoupons(): Observable<coupon[]> {
-    return this.http.get<coupon[]>(`${this.baseUrl}/coupon/getAllActiveCoupons`,{
+  getAllActiveCoupons(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/coupon/getAllActiveCoupons`,{
       headers : this.createAuthorizationHeader(),
     });
   }
+
+  applyPromoCode(promoCode:string, amount : number): Observable<any> {
+    const applyCouponDto = {
+        coupon : promoCode,
+        amount : amount
+    };
+    return this.http.post<any>(`${this.baseUrl}/cart/applyCoupon`, applyCouponDto ,{
+      headers : this.createAuthorizationHeader(),
+    });
+  } 
 
 }
