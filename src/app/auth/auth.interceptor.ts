@@ -12,14 +12,8 @@ export class AuthInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     
     return next.handle(req).pipe(
-      tap(event => {
-        // This will log for every response received from the server
-        console.log('intercepting request1');
-      }),
       catchError((error: HttpErrorResponse) => {
-        console.log('intercepting request2');
         if (error.status === 403) {
-          console.log('intercepting request3');
           this.authService.logout();
         }
         return throwError(() => error);
