@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthServiceService } from './auth-service.service';
 
@@ -10,9 +10,16 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private router: Router, private authService: AuthServiceService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    
     return next.handle(req).pipe(
+      tap(event => {
+        // This will log for every response received from the server
+        console.log('intercepting request1');
+      }),
       catchError((error: HttpErrorResponse) => {
-        if (error.status === 401) {
+        console.log('intercepting request2');
+        if (error.status === 403) {
+          console.log('intercepting request3');
           this.authService.logout();
         }
         return throwError(() => error);
